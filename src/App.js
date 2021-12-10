@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import OrderUpdate from './Components/OrderUpdate';
+import OrderList from './Components/OrderList';
+import OrderEntry from './Components/OrderEntry';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+export default class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Routes>
+          <React.Fragment>
+            <Route path="/orderlist" element={<OrderList/>} />
+            <Route exact path="/orderentry" element={<OrderEntry/>} />
+            <Route path="/orderupdate/:id" element={<OrderUpdate/>} />
+          </React.Fragment>
+        </Routes>
+      </Router>
+    );
+  }
 }
 
-export default App;
